@@ -68,6 +68,7 @@ a:hover {
   border-bottom: 1px solid var(--color-border);
   padding: var(--spacing-sm) 0;
   margin-bottom: var(--spacing-lg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .nav-content {
@@ -77,6 +78,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .nav-brand {
@@ -85,12 +87,18 @@ a:hover {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.nav-brand:hover {
+  color: var(--color-accent);
 }
 
 .nav-links {
   display: flex;
   gap: var(--spacing-md);
   list-style: none;
+  align-items: center;
 }
 
 .nav-link {
@@ -98,6 +106,16 @@ a:hover {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--color-secondary);
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-accent);
+}
+
+.nav-link.active {
+  color: var(--color-primary);
+  font-weight: 500;
 }
 
 /* ===== Poem Styles ===== */
@@ -555,4 +573,113 @@ a:hover {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-white);
+}
+
+/* ===== Welcome Page Styles ===== */
+.welcome-container {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.welcome-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.welcome-title {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.welcome-subtitle {
+  font-size: 1.25rem;
+  color: var(--color-secondary);
+  letter-spacing: 0.02em;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.welcome-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  justify-content: center;
+}
+
+.welcome-card {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-border);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.welcome-card-icon {
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.8;
+}
+
+.welcome-card-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.02em;
+}
+
+.welcome-card-count {
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-md);
+}
+
+.welcome-card-cta {
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.welcome-card:hover .welcome-card-cta {
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .welcome-title {
+    font-size: 2.5rem;
+  }
+  
+  .welcome-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .welcome-cards {
+    grid-template-columns: 1fr;
+  }
 }

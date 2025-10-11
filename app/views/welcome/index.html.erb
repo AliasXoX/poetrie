@@ -1,0 +1,32 @@
+<nav class="nav">
+  <div class="nav-content">
+    <%= link_to "Poetrie", root_path, class: "nav-brand" %>
+    <ul class="nav-links">
+      <li><%= link_to "Poems", poems_path, class: "nav-link" %></li>
+      <li><%= link_to "Gallery", images_path, class: "nav-link" %></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="welcome-container">
+  <div class="welcome-header">
+    <h1 class="welcome-title">Poetrie</h1>
+    <p class="welcome-subtitle">A collection of poetry and visual art, carefully curated and beautifully presented</p>
+  </div>
+
+  <div class="welcome-cards">
+    <%= link_to poems_path, class: "welcome-card" do %>
+      <div class="welcome-card-icon">✒</div>
+      <h2 class="welcome-card-title">Poems</h2>
+      <p class="welcome-card-count"><%= @poems_count %> <%= @poems_count == 1 ? 'Poem' : 'Poems' %></p>
+      <span class="welcome-card-cta">Explore poems →</span>
+    <% end %>
+
+    <%= link_to images_path, class: "welcome-card" do %>
+      <div class="welcome-card-icon">🖼</div>
+      <h2 class="welcome-card-title">Gallery</h2>
+      <p class="welcome-card-count"><%= @images_count %> <%= @images_count == 1 ? 'Image' : 'Images' %></p>
+      <span class="welcome-card-cta">Explore gallery →</span>
+    <% end %>
+  </div>
+</div>

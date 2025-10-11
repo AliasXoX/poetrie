@@ -1,3 +1,13 @@
+<nav class="nav">
+  <div class="nav-content">
+    <%= link_to "Poetrie", root_path, class: "nav-brand" %>
+    <ul class="nav-links">
+      <li><%= link_to "Poems", poems_path, class: "nav-link active" %></li>
+      <li><%= link_to "Gallery", images_path, class: "nav-link" %></li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container">
   <div class="content-wrapper">
     <div class="poem-container">
