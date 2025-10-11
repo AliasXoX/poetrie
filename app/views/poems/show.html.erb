@@ -1,2 +1,15 @@
-<h1><%= @poem.title %></h1>
-<p><%= @poem.show_content %></p>
+<div class="container">
+  <div class="content-wrapper">
+    <div class="poem-container">
+      <div class="poem-header">
+        <h1 class="poem-title"><%= @poem.title %></h1>
+      </div>
+      
+      <div class="poem-content"><%= @poem.show_content %></div>
+      
+      <div style="text-align: center;">
+        <%= link_to "← Back", :back, class: "poem-back-link" %>
+      </div>
+    </div>
+  </div>
+</div>

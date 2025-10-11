@@ -1,9 +1,18 @@
-<%= image_tag @image.image_file.url if @image.image_file.present? %>
-<p>
-  <strong>Uploaded at:</strong>
-  <%= @image.created_at %>
-</p>
-<p>
-  <strong>File URL:</strong>
-  <%= @image.image_file.url if @image.image_file.present? %>
-</p>
+<div class="container">
+  <div class="painting-container">
+    <div class="painting-header">
+      <h1 class="painting-title"><%= @image.title %></h1>
+    </div>
+    
+    <div class="painting-image-wrapper">
+      <%= image_tag @image.image_file.url, alt: @image.title, class: "painting-image" if @image.image_file.present? %>
+    </div>
+    
+    <div class="painting-info">
+      <p><%= @image.created_at.strftime("%B %d, %Y") %></p>
+      <div>
+        <%= link_to "← Back", :back, class: "painting-back-link" %>
+      </div>
+    </div>
+  </div>
+</div>

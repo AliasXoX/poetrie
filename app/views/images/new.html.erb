@@ -1,13 +1,25 @@
-<%= form_for @image, url: images_path, html: { multipart: true } do |f| %>
-  <div>
-    <%= f.label :image_file, "Upload Image" %>
-    <%= f.file_field :image_file, required: true %>
+<div class="container">
+  <div class="content-wrapper">
+    <div class="form-container">
+      <div class="form-header">
+        <h1 class="form-title">Upload New Image</h1>
+      </div>
+
+      <%= form_for @image, url: images_path, html: { multipart: true } do |f| %>
+        <div class="field">
+          <%= f.label :title %>
+          <%= f.text_field :title, required: true, placeholder: "Enter title..." %>
+        </div>
+
+        <div class="field">
+          <%= f.label :image_file, "Select Image" %>
+          <%= f.file_field :image_file, required: true, accept: "image/*" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Upload" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title, required: true %>
-  </div>
-  <div>
-    <%= f.submit "Upload Image" %>
-  </div>
-<% end %>
+</div>
