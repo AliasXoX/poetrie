@@ -5,6 +5,7 @@ class ImagesController < ApplicationController
 
     if @image.save
       render json: { url: @image.image_file.url }, status: :created
+      redirect_to @image, notice: 'Image was successfully uploaded.'
     else
       render json: { errors: @image.errors.full_messages }, status: :unprocessable_entity
     end
