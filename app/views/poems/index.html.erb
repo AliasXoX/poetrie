@@ -1,0 +1,41 @@
+<nav class="nav">
+  <div class="nav-content">
+    <%= link_to "Poetrie", root_path, class: "nav-brand" %>
+    <ul class="nav-links">
+      <li><%= link_to "Poems", poems_path, class: "nav-link active" %></li>
+      <li><%= link_to "Gallery", images_path, class: "nav-link" %></li>
+      <li><%= link_to "New Poem", new_poem_path, class: "nav-link" %></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="index-header">
+    <h1 class="index-title">Poems</h1>
+    <p class="index-subtitle"><%= @poems.count %> <%= @poems.count == 1 ? 'Poem' : 'Poems' %></p>
+  </div>
+
+  <% if @poems.any? %>
+    <div class="poems-grid">
+      <% @poems.each do |poem| %>
+        <article class="poem-card">
+          <h2 class="poem-card-title">
+            <%= link_to poem.title, poem_path(poem), style: "color: inherit;" %>
+          </h2>
+          
+          <div class="poem-card-excerpt">
+            <%= truncate(poem.show_content, length: 150, separator: ' ', omission: '...') if poem.show_content %>
+          </div>
+          
+          <%= link_to "Read poem →", poem_path(poem), class: "poem-card-link" %>
+        </article>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="empty-state">
+      <div class="empty-state-icon">✒</div>
+      <p class="empty-state-text">No poems yet</p>
+      <%= link_to "Create your first poem", new_poem_path, class: "empty-state-link" %>
+    </div>
+  <% end %>
+</div>

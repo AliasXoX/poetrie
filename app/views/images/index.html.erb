@@ -1,0 +1,45 @@
+<nav class="nav">
+  <div class="nav-content">
+    <%= link_to "Poetrie", root_path, class: "nav-brand" %>
+    <ul class="nav-links">
+      <li><%= link_to "Poems", poems_path, class: "nav-link" %></li>
+      <li><%= link_to "Gallery", images_path, class: "nav-link active" %></li>
+      <li><%= link_to "Upload Image", new_image_path, class: "nav-link" %></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="index-header">
+    <h1 class="index-title">Gallery</h1>
+    <p class="index-subtitle"><%= @images.count %> <%= @images.count == 1 ? 'Image' : 'Images' %></p>
+  </div>
+
+  <% if @images.any? %>
+    <div class="images-grid">
+      <% @images.each do |image| %>
+        <%= link_to image_path(image), style: "color: inherit;" do %>
+          <article class="image-card">
+            <div class="image-card-thumbnail">
+              <%= image_tag image.image_file.url, alt: image.title if image.image_file.present? %>
+            </div>
+            
+            <div class="image-card-info">
+              <div>
+                <h2 class="image-card-title"><%= image.title %></h2>
+                <p class="image-card-date"><%= image.created_at.strftime("%B %d, %Y") %></p>
+              </div>
+              <span class="image-card-link">View →</span>
+            </div>
+          </article>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="empty-state">
+      <div class="empty-state-icon">🖼</div>
+      <p class="empty-state-text">No images yet</p>
+      <%= link_to "Upload your first image", new_image_path, class: "empty-state-link" %>
+    </div>
+  <% end %>
+</div>

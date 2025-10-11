@@ -1,15 +1,35 @@
-<%= form_with model: @poem, local: true do |f| %>
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, required: true %>
+<nav class="nav">
+  <div class="nav-content">
+    <%= link_to "Poetrie", root_path, class: "nav-brand" %>
+    <ul class="nav-links">
+      <li><%= link_to "Poems", poems_path, class: "nav-link active" %></li>
+      <li><%= link_to "Gallery", images_path, class: "nav-link" %></li>
+    </ul>
   </div>
+</nav>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content, required: true %>
-  </div>
+<div class="container">
+  <div class="content-wrapper">
+    <div class="form-container">
+      <div class="form-header">
+        <h1 class="form-title">New Poem</h1>
+      </div>
 
-  <div class="actions">
-    <%= f.submit %>
+      <%= form_with model: @poem, local: true do |f| %>
+        <div class="field">
+          <%= f.label :title %>
+          <%= f.text_field :title, required: true, placeholder: "Enter poem title..." %>
+        </div>
+
+        <div class="field">
+          <%= f.label :content %>
+          <%= f.text_area :content, required: true, placeholder: "Write your poem here..." %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Publish Poem" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>

@@ -1,14 +1,16 @@
 class ImagesController < ApplicationController
-
   def create
     @image = Image.new(image_params)
 
     if @image.save
-      render json: { url: @image.image_file.url }, status: :created
-      redirect_to @image, notice: 'Image was successfully uploaded.'
+      redirect_to @image, notice: "Image was successfully uploaded."
     else
       render json: { errors: @image.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def index
+    @images = Image.all
   end
 
   def new
