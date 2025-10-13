@@ -243,6 +243,16 @@ a:hover {
 }
 
 /* ===== Form Styles ===== */
+
+.form {
+  max-width: 600px;
+  margin: var(--spacing-lg) auto;
+}
+
+.form.hidden {
+  display: none;
+}
+
 .form-container {
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
@@ -450,6 +460,36 @@ a:hover {
 
 .poem-card-link:hover {
   border-bottom-color: var(--color-accent);
+}
+
+/* ===== Comment Styles ===== */
+
+.add-comment-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-comment-button:hover {
+  background-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.add-comment-button.hidden {
+  display: none;
 }
 
 /* ===== Images Gallery Styles ===== */

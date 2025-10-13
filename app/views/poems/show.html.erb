@@ -8,15 +8,36 @@
   </div>
 </nav>
 
-<div class="container">
+<div class="container" data-controller="poems">
   <div class="content-wrapper">
     <div class="poem-container">
       <div class="poem-header">
         <h1 class="poem-title"><%= @poem.title %></h1>
+        <button class="add-comment-button hidden" data-poems-target="addCommentButton" data-action="click->poems#handleClick">Add Comment</button>
       </div>
       
-      <div class="poem-content"><%= @poem.show_content %></div>
-      
+      <div class="poem-content" data-poems-target="poemContent">
+        <%= @poem.show_content %>
+      </div>
+
+      <%= form_with(model: [@poem, @poem.comments.new], class: 'form hidden', data: { action: "poems#handleSubmit", poems_target: "form" }) do |f| %>
+        <div>
+          <%= f.label :start_position %>
+          <%= f.hidden_field :start_position, data: { poems_target: "startPosition"} %>
+        </div>
+        <div>
+          <%= f.label :end_position %>
+          <%= f.hidden_field :end_position, data: { poems_target: "endPosition"} %>
+        </div>
+        <div>
+          <%= f.label :content %>
+          <%= f.text_field :content, required: true %>
+        </div>
+        <div>
+          <%= f.submit yield(:button_text) %>
+        </div>
+      <% end %>
+
       <div style="text-align: center;">
         <%= link_to "← Back", :back, class: "poem-back-link" %>
       </div>

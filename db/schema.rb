@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_11_202331) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_13_205101) do
+  create_table "comments", force: :cascade do |t|
+    t.integer "poem_id", null: false
+    t.integer "start_position", null: false
+    t.integer "end_position", null: false
+    t.text "content", limit: 100000, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poem_id"], name: "index_comments_on_poem_id"
+  end
+
   create_table "images", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,4 +34,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_11_202331) do
     t.string "url"
     t.string "title"
   end
+
+  add_foreign_key "comments", "poems"
 end
