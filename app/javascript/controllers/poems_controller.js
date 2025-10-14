@@ -28,7 +28,8 @@ export default class extends Controller {
     if (
       !this.poemContentTarget.contains(anchorNode) ||
       !this.poemContentTarget.contains(focusNode) ||
-      selection.length === 0
+      selection.length === 0 ||
+      this.markElement
     ) {
       this.addCommentButtonTarget.classList.add("hidden")
       return
@@ -38,9 +39,7 @@ export default class extends Controller {
 
     this.startRef = range.startOffset
     this.endRef = range.endOffset
-    if (!this.markElement) {
-        this.savedRange = range.cloneRange()
-    }
+    this.savedRange = range.cloneRange()
     this.addCommentButtonTarget.classList.remove("hidden")
   }
 
