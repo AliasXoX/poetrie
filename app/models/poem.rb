@@ -1,6 +1,8 @@
 class Poem < ApplicationRecord
   after_create :save_poem_to_file
 
+  has_many :comments, dependent: :destroy
+
   validates :title, presence: true
 
   attr_accessor :content
