@@ -18,6 +18,8 @@ class PoemsController < ApplicationController
 
   def show
     @poem = Poem.find(params[:id])
+    @comments_starting_positions = @poem.comments.pluck(:start_position)
+    @comments_ending_positions = @poem.comments.pluck(:end_position)
   end
 
   private

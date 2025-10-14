@@ -617,6 +617,101 @@ a:hover {
   color: var(--color-primary);
 }
 
+/* Comment Display Styles */
+.comment-display {
+  max-width: 650px;
+  margin: var(--spacing-md) auto;
+  padding: var(--spacing-md);
+  background-color: var(--color-white);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease;
+  position: relative;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.comment-display.hidden {
+  display: none;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.comment-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.comment-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-secondary);
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  border-radius: 50%;
+}
+
+.comment-close:hover {
+  color: var(--color-primary);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.comment-body {
+  padding: var(--spacing-xs) 0;
+}
+
+.comment-text {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+/* Comment Highlight Styles */
+.comment-highlight {
+  background-color: rgba(139, 115, 85, 0.15);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-bottom: 2px solid rgba(139, 115, 85, 0.3);
+}
+
+.comment-highlight:hover {
+  background-color: rgba(139, 115, 85, 0.25);
+}
+
+.comment-display.hidden {
+  display: none;
+}
+
 /* Responsive adjustments for comments */
 @media (max-width: 768px) {
   .add-comment-button {

@@ -13,6 +13,7 @@ export default class extends Controller {
   endRef = 0
   savedRange = null
   markElement = null
+  prevComment = null
 
   connect() {
     console.log("Poems controller connected")
@@ -83,5 +84,26 @@ export default class extends Controller {
       parent.removeChild(this.markElement)
       this.markElement = null
     }
+  }
+
+  showComment(event) {
+    const commentId = event.currentTarget.id.split("-")[1]
+    const commentElement = document.getElementById(`comment-${commentId}`)
+    if (commentElement.classList.contains("hidden")) {
+      commentElement.classList.remove("hidden")
+      if (this.prevComment) {
+        this.prevComment.classList.add("hidden")
+      }
+      this.prevComment = commentElement
+    } else {
+      commentElement.classList.add("hidden")
+      this.prevComment = null
+    }
+  }
+
+  hideComment(event) {
+    const commentId = event.currentTarget.id.split("-")[1]
+    const commentElement = document.getElementById(`comment-${commentId}`)
+    commentElement.classList.add("hidden")
   }
 }
