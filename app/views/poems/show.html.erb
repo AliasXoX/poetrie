@@ -13,32 +13,27 @@
     <div class="poem-container">
       <div class="poem-header">
         <h1 class="poem-title"><%= @poem.title %></h1>
-        <button class="add-comment-button hidden" data-poems-target="addCommentButton" data-action="click->poems#handleClick">Add Comment</button>
       </div>
       
-      <div class="poem-content" data-poems-target="poemContent">
-        <%= @poem.show_content %>
-      </div>
+      <pre class="poem-content" data-poems-target="poemContent"><%= @poem.show_content %></pre>
 
-      <%= form_with(model: [@poem, @poem.comments.new], class: 'form hidden', data: { action: "poems#handleSubmit", poems_target: "form" }) do |f| %>
-        <div>
-          <%= f.label :start_position %>
-          <%= f.hidden_field :start_position, data: { poems_target: "startPosition"} %>
+      <%= form_with(model: [@poem, @poem.comments.new], class: 'comment-form hidden', data: { action: "poems#handleSubmit", poems_target: "form" }) do |f| %>
+        <%= f.hidden_field :start_position, data: { poems_target: "startPosition"} %>
+        <%= f.hidden_field :end_position, data: { poems_target: "endPosition"} %>
+        <div class="comment-form-field">
+          <%= f.text_field :content, required: true, placeholder: "Add your comment...", class: "comment-input" %>
         </div>
-        <div>
-          <%= f.label :end_position %>
-          <%= f.hidden_field :end_position, data: { poems_target: "endPosition"} %>
-        </div>
-        <div>
-          <%= f.label :content %>
-          <%= f.text_field :content, required: true %>
-        </div>
-        <div>
-          <%= f.submit yield(:button_text) %>
+        <div class="comment-form-actions">
+          <span class="comment-form-footer" data-action="click->poems#handleCancel">Cancel</span>
+          <%= f.submit "Comment", class: "comment-submit-btn" %>
         </div>
       <% end %>
 
-      <div style="text-align: center;">
+      <button class="add-comment-button hidden" data-poems-target="addCommentButton" data-action="click->poems#handleClick" title="Add comment to selected text">
+        <span class="add-comment-icon">💬</span>
+      </button>
+
+      <div class="poem-footer">
         <%= link_to "← Back", :back, class: "poem-back-link" %>
       </div>
     </div>

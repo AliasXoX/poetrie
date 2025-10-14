@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
     @comment = @poem.comments.new(comment_params)
 
     if @comment.save
-      redirect_to poem_path(@poem), notice: 'Comment was successfully created.'
+      redirect_to poem_path(@poem), notice: "Comment was successfully created."
     else
-      redirect_to poem_path(@poem), alert: 'Failed to create comment.'
+      redirect_to poem_path(@poem), alert: "Failed to create comment."
     end
   end
 

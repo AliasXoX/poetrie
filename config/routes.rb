@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :images
   resources :poems do
-    resources :comments, only: [:create]
+    resources :comments, only: [ :create ]
   end
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

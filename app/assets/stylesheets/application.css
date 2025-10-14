@@ -125,6 +125,7 @@ a:hover {
   padding: var(--spacing-xl) var(--spacing-lg);
   margin: var(--spacing-lg) auto;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
 .poem-header {
@@ -152,16 +153,35 @@ a:hover {
   white-space: pre-wrap;
   text-align: left;
   max-width: 650px;
-  margin: 0 auto;
+  margin: 0 auto var(--spacing-xl) auto;
+  text-indent: 0 !important;
+  padding-left: 0;
 }
 
 .poem-content p {
   margin-bottom: var(--spacing-md);
+  text-indent: 0 !important;
+  padding-left: 0;
+}
+
+.poem-content * {
+  text-indent: 0 !important;
+}
+
+.poem-text p:first-child {
+  text-indent: 0 !important;
+  margin-top: 0;
+}
+
+.poem-footer {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
 }
 
 .poem-back-link {
   display: inline-block;
-  margin-top: var(--spacing-lg);
   padding: var(--spacing-xs) var(--spacing-sm);
   font-size: 0.9rem;
   letter-spacing: 0.05em;
@@ -466,30 +486,149 @@ a:hover {
 
 .add-comment-button {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--color-accent);
+  bottom: 30px;
+  right: 30px;
+  background-color: rgba(139, 115, 85, 0.85);
   color: var(--color-white);
   border: none;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 2rem;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  z-index: 100;
 }
 
 .add-comment-button:hover {
-  background-color: var(--color-primary);
-  transform: translateY(-2px);
+  background-color: var(--color-accent);
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.add-comment-icon {
+  font-size: 1.25rem;
 }
 
 .add-comment-button.hidden {
   display: none;
+}
+
+/* Comment Form Styles */
+.comment-form {
+  max-width: 650px;
+  margin: var(--spacing-md) auto;
+  padding: var(--spacing-md);
+  background-color: rgba(250, 250, 248, 0.95);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  animation: slideDown 0.3s ease;
+  pointer-events: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.comment-form.hidden {
+  display: none;
+}
+
+.comment-form-field {
+  margin-bottom: var(--spacing-sm);
+}
+
+.comment-input {
+  width: 100%;
+  padding: var(--spacing-sm);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.comment-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(139, 115, 85, 0.1);
+}
+
+.comment-input::placeholder {
+  color: var(--color-secondary);
+  opacity: 0.6;
+}
+
+.comment-form-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.comment-submit-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.comment-submit-btn:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.comment-form-footer {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition: color 0.3s ease;
+  pointer-events: auto;
+  text-align: center;
+}
+
+.comment-form-footer:hover {
+  color: var(--color-primary);
+}
+
+/* Responsive adjustments for comments */
+@media (max-width: 768px) {
+  .add-comment-button {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .add-comment-icon {
+    font-size: 1.1rem;
+  }
 }
 
 /* ===== Images Gallery Styles ===== */
