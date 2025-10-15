@@ -17,6 +17,20 @@ export default class extends Controller {
   markElement = null
   prevComment = null
 
+  getLinearOffset(container, node, offset) {
+    let linearOffset = 0;
+    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+    while (walker.nextNode()) {
+      if (walker.currentNode === node) {
+        linearOffset += offset;
+        break;
+      } else {
+        linearOffset += walker.currentNode.textContent.length;
+      }
+    }
+    return linearOffset;
+  }
+
   connect() {
     console.log("Poems controller connected")
     document.addEventListener("selectionchange", this.getSelection.bind(this))
@@ -40,12 +54,16 @@ export default class extends Controller {
     }
 
     const range = window.getSelection().getRangeAt(0)
-    console.log("Range:", range)
+    const sel = window.getSelection()
+    for (let i = 0; i < sel.rangeCount; i++) {
 
-    this.startRef = range.startOffset
-    this.endRef = range.endOffset
+      console.log("Range:",i, sel.getRangeAt(i))
+    }
+
+    this.startRef = this.getLinearOffset(this.poemContentTarget, range.startContainer, range.startOffset)
+    this.endRef = this.getLinearOffset(this.poemContentTarget, range.endContainer, range.endOffset)
+    console.log("Start:", this.startRef, "End:", this.endRef)
     this.savedRange = range.cloneRange()
-    console.log(`Selected text from ${this.startRef} to ${this.endRef}: "${selection}"`)  
     this.addCommentButtonTarget.classList.remove("hidden")
   }
 
