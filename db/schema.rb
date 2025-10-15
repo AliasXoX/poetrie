@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_13_205101) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_15_200817) do
   create_table "comments", force: :cascade do |t|
     t.integer "poem_id", null: false
     t.integer "start_position", null: false
@@ -31,8 +31,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_13_205101) do
   create_table "poems", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "url"
     t.string "title"
+    t.text "content", null: false
   end
 
   add_foreign_key "comments", "poems"

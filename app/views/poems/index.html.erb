@@ -24,7 +24,7 @@
           </h2>
           
           <div class="poem-card-excerpt">
-            <%= truncate(poem.show_content, length: 150, separator: ' ', omission: '...') if poem.show_content %>
+            <%= truncate(poem.content, length: 150, separator: ' ', omission: '...') if poem.content %>
           </div>
           
           <%= link_to "Read poem →", poem_path(poem), class: "poem-card-link" %>

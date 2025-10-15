@@ -15,7 +15,7 @@
         <h1 class="poem-title"><%= @poem.title %></h1>
       </div>
 
-      <pre class="poem-content" data-poems-target="poemContent" id="poem-<%= @poem.id %>"><% for i in 0..@poem.show_content.length -%><% if @comments_starting_positions.include?(i) -%><span class="comment-highlight" data-action="click->poems#showComment" id="comment_index-<%= @poem.comments.find_by(start_position: i).id %>"><% end -%><%= @poem.show_content[i] %><% if @comments_ending_positions.include?(i) -%></span><% end -%><% end -%></pre>
+      <pre class="poem-content" data-poems-target="poemContent" id="poem-<%= @poem.id %>"><% for i in 0..@poem.content.length -%><% if @comments_starting_positions.include?(i) -%><span class="comment-highlight" data-action="click->poems#showComment" id="comment_index-<%= @poem.comments.find_by(start_position: i).id %>"><% end -%><%= @poem.content[i] %><% if @comments_ending_positions.include?(i) -%></span><% end -%><% end -%></pre>
 
       <%= form_with(model: [@poem, @poem.comments.new], class: 'comment-form hidden', data: { action: "poems#handleSubmit", poems_target: "form" }) do |f| %>
         <%= f.hidden_field :start_position, data: { poems_target: "startPosition"} %>
