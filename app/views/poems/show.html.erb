@@ -20,7 +20,7 @@
       <%= form_with(model: [@poem, @poem.comments.new], class: 'comment-form hidden', data: { action: "poems#handleSubmit", poems_target: "form" }) do |f| %>
         <%= f.hidden_field :start_position, data: { poems_target: "startPosition"} %>
         <%= f.hidden_field :end_position, data: { poems_target: "endPosition"} %>
-        <div class="comment-form-field">
+        <div class="comment-form-field" id="comment-field-new">
           <%= f.text_field :content, required: true, placeholder: "Add your comment...", class: "comment-input" %>
         </div>
         <div class="comment-form-actions">
