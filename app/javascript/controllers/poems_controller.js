@@ -18,17 +18,22 @@ export default class extends Controller {
   prevComment = null
 
   getLinearOffset(container, node, offset) {
-    let linearOffset = 0;
-    const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+    let linearOffset = 0
+    const walker = document.createTreeWalker(
+      container,
+      NodeFilter.SHOW_TEXT,
+      null,
+      false
+    )
     while (walker.nextNode()) {
       if (walker.currentNode === node) {
-        linearOffset += offset;
-        break;
+        linearOffset += offset
+        break
       } else {
-        linearOffset += walker.currentNode.textContent.length;
+        linearOffset += walker.currentNode.textContent.length
       }
     }
-    return linearOffset;
+    return linearOffset
   }
 
   connect() {
@@ -56,20 +61,28 @@ export default class extends Controller {
     const range = window.getSelection().getRangeAt(0)
     const sel = window.getSelection()
     for (let i = 0; i < sel.rangeCount; i++) {
-
-      console.log("Range:",i, sel.getRangeAt(i))
+      console.log("Range:", i, sel.getRangeAt(i))
     }
 
-    this.startRef = this.getLinearOffset(this.poemContentTarget, range.startContainer, range.startOffset)
-    this.endRef = this.getLinearOffset(this.poemContentTarget, range.endContainer, range.endOffset)
+    this.startRef = this.getLinearOffset(
+      this.poemContentTarget,
+      range.startContainer,
+      range.startOffset
+    )
+    this.endRef = this.getLinearOffset(
+      this.poemContentTarget,
+      range.endContainer,
+      range.endOffset
+    )
     console.log("Start:", this.startRef, "End:", this.endRef)
     this.savedRange = range.cloneRange()
     this.addCommentButtonTarget.classList.remove("hidden")
   }
 
-  handleClick() {
+  handleClick(event) {
     if (this.formTarget.classList.contains("hidden")) {
       this.formTarget.classList.remove("hidden")
+      event.currentTarget.element.querySelector(".comment-text").innerText = ""
       this.highlighted = true
       const highlight = document.createElement("mark")
       this.markElement = highlight
@@ -115,7 +128,7 @@ export default class extends Controller {
     const commentElement = document.getElementById(`comment-${commentId}`)
     if (commentElement.classList.contains("hidden")) {
       commentElement.classList.remove("hidden")
-      if (this.prevComment) {
+      if (this.prevComment && this.prevComment !== commentElement) {
         this.prevComment.classList.add("hidden")
       }
       this.prevComment = commentElement
@@ -140,7 +153,9 @@ export default class extends Controller {
 
     // Populate the update form
     this.updateFormTarget.action = `/poems/${this.poemId}/comments/${commentId}`
-    this.updateFormTarget.querySelector('input[name="comment[content]"]').value = commentText
+    this.updateFormTarget.querySelector(
+      'input[name="comment[content]"]'
+    ).value = commentText
 
     if (this.updateFormTarget.classList.contains("hidden")) {
       console.log("Showing update form")

@@ -20,6 +20,12 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to poem_path(@comment.poem), notice: "Comment was successfully deleted."
+  end
+
   def show
     @comment = Comment.find(params[:id])
   end

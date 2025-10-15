@@ -49,7 +49,12 @@
             <p class="comment-text"><%= comment.content %></p>
           </div>
           <div class="comment-actions">
-            <button class="comment-edit-button" data-action="click->poems#handleEdit" data-poems-target="editButton" id="comment_edit-<%= comment.id %>">Edit</button>
+            <button class="comment-edit-btn" data-action="click->poems#handleEdit" data-poems-target="editButton" id="comment_edit-<%= comment.id %>" title="Edit comment">
+              <span class="comment-action-text">Edit</span>
+            </button>
+            <%= button_to [@poem, comment], method: :delete, data: { confirm: "Are you sure you want to delete this comment?", action: "poems#handlDelete" }, class: "comment-delete-btn", title: "Delete comment" do %>
+              <span class="comment-action-text">Delete</span>
+            <% end %>
           </div>
         </div>
       <% end %>

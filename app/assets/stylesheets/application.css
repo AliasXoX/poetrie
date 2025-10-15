@@ -696,6 +696,60 @@ a:hover {
   margin: 0;
 }
 
+/* Comment Actions Styles */
+.comment-actions {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+  justify-content: flex-end;
+}
+
+.comment-edit-btn,
+.comment-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  background-color: var(--color-white);
+  color: var(--color-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comment-edit-btn:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.comment-delete-btn {
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.comment-delete-btn:hover {
+  background-color: #d64545;
+  border-color: #d64545;
+  color: var(--color-white);
+}
+
+.comment-action-icon {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.comment-action-text {
+  line-height: 1;
+}
+
 /* Comment Highlight Styles */
 .comment-highlight {
   background-color: rgba(139, 115, 85, 0.15);
@@ -723,6 +777,20 @@ a:hover {
   
   .add-comment-icon {
     font-size: 1.1rem;
+  }
+  
+  .comment-actions {
+    flex-wrap: wrap;
+  }
+  
+  .comment-edit-btn,
+  .comment-delete-btn {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.7rem;
+  }
+  
+  .comment-action-icon {
+    font-size: 0.85rem;
   }
 }
 
