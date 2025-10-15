@@ -15,7 +15,7 @@
         <h1 class="poem-title"><%= @poem.title %></h1>
       </div>
 
-      <pre class="poem-content" data-poems-target="poemContent"><% for i in 0..@poem.show_content.length -%><% if @comments_starting_positions.include?(i) -%><span class="comment-highlight" data-action="click->poems#showComment" id="comment_index-<%= @poem.comments.find_by(start_position: i).id %>"><% end -%><%= @poem.show_content[i] %><% if @comments_ending_positions.include?(i) -%></span><% end -%><% end -%></pre>
+      <pre class="poem-content" data-poems-target="poemContent" id="poem-<%= @poem.id %>"><% for i in 0..@poem.show_content.length -%><% if @comments_starting_positions.include?(i) -%><span class="comment-highlight" data-action="click->poems#showComment" id="comment_index-<%= @poem.comments.find_by(start_position: i).id %>"><% end -%><%= @poem.show_content[i] %><% if @comments_ending_positions.include?(i) -%></span><% end -%><% end -%></pre>
 
       <%= form_with(model: [@poem, @poem.comments.new], class: 'comment-form hidden', data: { action: "poems#handleSubmit", poems_target: "form" }) do |f| %>
         <%= f.hidden_field :start_position, data: { poems_target: "startPosition"} %>
@@ -29,6 +29,16 @@
         </div>
       <% end %>
 
+      <%= form_with(url: "", method: :patch, class: 'comment-form hidden', data: { poems_target: "updateForm" }) do %>
+        <div class="comment-form-field">
+          <%= text_field_tag "comment[content]", @comment.content, required: true, class: "comment-input" %>
+        </div>
+        <div class="comment-form-actions">
+          <span class="comment-form-footer" data-action="click->poems#handleCancel">Cancel</span>
+          <%= submit_tag "Update", class: "comment-submit-btn" %>
+        </div>
+      <% end %>
+
       <% @poem.comments.each do |comment| %>
         <div class="comment-display hidden" id="comment-<%= comment.id %>" data-poems-target="commentDisplay">
           <div class="comment-header">
@@ -37,6 +47,14 @@
           </div>
           <div class="comment-body">
             <p class="comment-text"><%= comment.content %></p>
+          </div>
+          <div class="comment-actions">
+            <button class="comment-edit-btn" data-action="click->poems#handleEdit" data-poems-target="editButton" id="comment_edit-<%= comment.id %>" title="Edit comment">
+              <span class="comment-action-text">Edit</span>
+            </button>
+            <%= button_to [@poem, comment], method: :delete, data: { confirm: "Are you sure you want to delete this comment?", action: "poems#handlDelete" }, class: "comment-delete-btn", title: "Delete comment" do %>
+              <span class="comment-action-text">Delete</span>
+            <% end %>
           </div>
         </div>
       <% end %>
