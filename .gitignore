@@ -35,4 +35,5 @@
 
 .direnv
 .envrc
-public
+public/uploads
+public/tmp
