@@ -5,12 +5,14 @@ export default class extends Controller {
     "poemContent",
     "addCommentButton",
     "form",
+    "updateForm",
     "startPosition",
     "endPosition",
   ]
 
   startRef = 0
   endRef = 0
+  poemId = null
   savedRange = null
   markElement = null
   prevComment = null
@@ -18,6 +20,7 @@ export default class extends Controller {
   connect() {
     console.log("Poems controller connected")
     document.addEventListener("selectionchange", this.getSelection.bind(this))
+    this.poemId = this.poemContentTarget.id.split("-")[1]
   }
 
   getSelection() {
@@ -37,10 +40,12 @@ export default class extends Controller {
     }
 
     const range = window.getSelection().getRangeAt(0)
+    console.log("Range:", range)
 
     this.startRef = range.startOffset
     this.endRef = range.endOffset
     this.savedRange = range.cloneRange()
+    console.log(`Selected text from ${this.startRef} to ${this.endRef}: "${selection}"`)  
     this.addCommentButtonTarget.classList.remove("hidden")
   }
 
@@ -74,6 +79,7 @@ export default class extends Controller {
 
   handleCancel() {
     this.formTarget.classList.add("hidden")
+    this.updateFormTarget.classList.add("hidden")
     this.savedRange = null
     this.addCommentButtonTarget.classList.add("hidden")
     if (this.markElement) {
@@ -105,5 +111,22 @@ export default class extends Controller {
     const commentId = event.currentTarget.id.split("-")[1]
     const commentElement = document.getElementById(`comment-${commentId}`)
     commentElement.classList.add("hidden")
+  }
+
+  handleEdit(event) {
+    const commentId = event.currentTarget.id.split("-")[1]
+    const commentElement = document.getElementById(`comment-${commentId}`)
+    const commentText = commentElement.querySelector(".comment-text").innerText
+
+    this.hideComment(event)
+
+    // Populate the update form
+    this.updateFormTarget.action = `/poems/${this.poemId}/comments/${commentId}`
+    this.updateFormTarget.querySelector('input[name="comment[content]"]').value = commentText
+
+    if (this.updateFormTarget.classList.contains("hidden")) {
+      console.log("Showing update form")
+      this.updateFormTarget.classList.remove("hidden")
+    }
   }
 }

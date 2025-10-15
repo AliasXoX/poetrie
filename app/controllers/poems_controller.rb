@@ -20,6 +20,7 @@ class PoemsController < ApplicationController
     @poem = Poem.find(params[:id])
     @comments_starting_positions = @poem.comments.pluck(:start_position)
     @comments_ending_positions = @poem.comments.pluck(:end_position)
+    @comment = @poem.comments.new
   end
 
   private
