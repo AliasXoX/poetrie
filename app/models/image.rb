@@ -1,6 +1,5 @@
 class Image < ApplicationRecord
-  mount_uploader :image_file, ImageFileUploader
+  has_one_attached :image_file
 
-  validates :image_file, presence: true
   validates :title, presence: true
 end
