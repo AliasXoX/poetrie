@@ -5,6 +5,9 @@
       <li><%= link_to "Poems", poems_path, class: "nav-link active" %></li>
       <li><%= link_to "Gallery", images_path, class: "nav-link" %></li>
       <li><%= link_to "New Poem", new_poem_path, class: "nav-link" %></li>
+      <li>
+        <%= button_to "Logout", logout_path, method: :delete, class: "nav-link logout-btn", form: { style: "display: inline;" } %>
+      </li>
     </ul>
   </div>
 </nav>

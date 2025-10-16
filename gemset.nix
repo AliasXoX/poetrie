@@ -151,6 +151,16 @@
     };
     version = "0.3.0";
   };
+  bcrypt = {
+    groups = ["default"];
+    platforms = [];
+    source = {
+      remotes = ["https://rubygems.org"];
+      sha256 = "16a0g2q40biv93i1hch3gw8rbmhp77qnnifj1k0a6m7dng3zh444";
+      type = "gem";
+    };
+    version = "3.1.20";
+  };
   bcrypt_pbkdf = {
     groups = ["default"];
     platforms = [];

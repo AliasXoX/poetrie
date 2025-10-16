@@ -1,0 +1,1 @@
+SESSION_DURATION_TIME = 3.hours

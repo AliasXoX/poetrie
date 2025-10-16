@@ -1,0 +1,38 @@
+<nav class="nav">
+  <div class="nav-content">
+    <%= link_to "Poetrie", root_path, class: "nav-brand" %>
+    <ul class="nav-links">
+      <li><%= link_to "Poems", poems_path, class: "nav-link" %></li>
+      <li><%= link_to "Gallery", images_path, class: "nav-link" %></li>
+      <li>
+        <%= button_to "Logout", logout_path, method: :delete, class: "nav-link logout-btn", form: { style: "display: inline;" } %>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="index-header">
+    <h1 class="index-title">Users</h1>
+    <p class="index-subtitle"><%= @users.count %> <%= @users.count == 1 ? 'User' : 'Users' %></p>
+  </div>
+
+  <% if @users.any? %>
+    <div class="users-grid">
+      <% @users.each do |user| %>
+        <article class="user-card">
+          <div class="user-card-icon">👤</div>
+          <h2 class="user-card-username"><%= user.username %></h2>
+          <div class="user-card-info">
+            <p class="user-card-date">Joined <%= user.created_at.strftime("%B %d, %Y") %></p>
+          </div>
+        </article>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="empty-state">
+      <div class="empty-state-icon">👥</div>
+      <p class="empty-state-text">No users yet</p>
+    </div>
+  <% end %>
+</div>
