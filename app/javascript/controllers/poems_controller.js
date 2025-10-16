@@ -60,9 +60,6 @@ export default class extends Controller {
 
     const range = window.getSelection().getRangeAt(0)
     const sel = window.getSelection()
-    for (let i = 0; i < sel.rangeCount; i++) {
-      console.log("Range:", i, sel.getRangeAt(i))
-    }
 
     this.startRef = this.getLinearOffset(
       this.poemContentTarget,
@@ -74,19 +71,21 @@ export default class extends Controller {
       range.endContainer,
       range.endOffset
     )
-    console.log("Start:", this.startRef, "End:", this.endRef)
     this.savedRange = range.cloneRange()
     this.addCommentButtonTarget.classList.remove("hidden")
   }
 
-  handleClick(event) {
+  handleClick() {
     if (this.formTarget.classList.contains("hidden")) {
       this.formTarget.classList.remove("hidden")
-      event.currentTarget.element.querySelector(".comment-text").innerText = ""
       this.highlighted = true
       const highlight = document.createElement("mark")
       this.markElement = highlight
       this.savedRange.surroundContents(highlight)
+      const documentFormField = document
+        .getElementById("comment-field-new")
+        .querySelector("input[name='comment[content]']")
+      documentFormField.value = ""
     } else {
       this.formTarget.classList.add("hidden")
       this.savedRange = null
