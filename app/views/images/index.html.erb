@@ -24,7 +24,7 @@
         <%= link_to image_path(image), style: "color: inherit;" do %>
           <article class="image-card">
             <div class="image-card-thumbnail">
-              <%= image_tag image.image_file.url, alt: image.title if image.image_file.present? %>
+              <%= image_tag image.image_file, alt: image.title if image.image_file.attached? %>
             </div>
             
             <div class="image-card-info">

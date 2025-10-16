@@ -4,8 +4,10 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+oath:
+  title: Green Lantern
+  content: |
+    In brightest day, in blackest night,
+    No evil shall escape my sight.
+    Let those who worship evil's might
+    Beware my power--Green Lantern's light!

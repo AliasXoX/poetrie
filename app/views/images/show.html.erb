@@ -18,7 +18,7 @@
     </div>
     
     <div class="painting-image-wrapper">
-      <%= image_tag @image.image_file.url, alt: @image.title, class: "painting-image" if @image.image_file.present? %>
+      <%= image_tag @image.image_file, alt: @image.title, class: "painting-image" if @image.image_file.attached? %>
     </div>
     
     <div class="painting-info">

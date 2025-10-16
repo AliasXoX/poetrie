@@ -244,17 +244,6 @@
     };
     version = "3.40.0";
   };
-  carrierwave = {
-    dependencies = ["activemodel" "activesupport" "addressable" "image_processing" "marcel" "ssrf_filter"];
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1x2qmpn637f2mh80340y4k456fijns5dk88gw7sbsjb4hdka9433";
-      type = "gem";
-    };
-    version = "3.1.2";
-  };
   concurrent-ruby = {
     groups = ["default" "development" "test"];
     platforms = [];
@@ -379,16 +368,6 @@
     };
     version = "1.4.0";
   };
-  ffi = {
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1si3p2yyzj1axrpq8503rsviaf192sgmad2r3b9czdyvr5ph5lh5";
-      type = "gem";
-    };
-    version = "1.17.2-x86_64-linux-gnu";
-  };
   fugit = {
     dependencies = ["et-orbi" "raabro"];
     groups = ["default"];
@@ -421,17 +400,6 @@
       type = "gem";
     };
     version = "1.14.7";
-  };
-  image_processing = {
-    dependencies = ["mini_magick" "ruby-vips"];
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1ys28w0ayq3vl2sl4lpq6jnsy7gd4p9vzimyi449hqn2r5lw2k3m";
-      type = "gem";
-    };
-    version = "1.14.0";
   };
   importmap-rails = {
     dependencies = ["actionpack" "activesupport" "railties"];
@@ -576,17 +544,6 @@
       type = "gem";
     };
     version = "0.4.3";
-  };
-  mini_magick = {
-    dependencies = ["logger"];
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1i2ilgjfjqc6sw4cwa4g9w3ngs41yvvazr9y82vapp5sfvymsf99";
-      type = "gem";
-    };
-    version = "5.3.1";
   };
   mini_mime = {
     groups = ["default" "test"];
@@ -1074,17 +1031,6 @@
     };
     version = "1.13.0";
   };
-  ruby-vips = {
-    dependencies = ["ffi" "logger"];
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "0n3pgw1jkkivgkn08qpc4fb1kiivhbshkj0lhrms4sy3fahlgigk";
-      type = "gem";
-    };
-    version = "2.2.5";
-  };
   rubyzip = {
     groups = ["default" "test"];
     platforms = [];
@@ -1169,16 +1115,6 @@
       type = "gem";
     };
     version = "1.24.0";
-  };
-  ssrf_filter = {
-    groups = ["default"];
-    platforms = [];
-    source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1wm6mc3q6182h13m2z5wxf2f22lm28j3gmynk280376hwxyjv236";
-      type = "gem";
-    };
-    version = "1.3.0";
   };
   stimulus-rails = {
     dependencies = ["railties"];

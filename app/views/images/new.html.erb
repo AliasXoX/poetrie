@@ -18,7 +18,7 @@
         <h1 class="form-title">Upload New Image</h1>
       </div>
 
-      <%= form_for @image, url: images_path, html: { multipart: true } do |f| %>
+      <%= form_for @image, url: images_path do |f| %>
         <div class="field">
           <%= f.label :title %>
           <%= f.text_field :title, required: true, placeholder: "Enter title..." %>
@@ -26,7 +26,7 @@
 
         <div class="field">
           <%= f.label :image_file, "Select Image" %>
-          <%= f.file_field :image_file, required: true, accept: "image/*" %>
+          <%= f.file_field :image_file, required: true, direct_upload: true, accept: "image/*" %>
         </div>
 
         <div class="actions">
