@@ -82,7 +82,9 @@ export default class extends Controller {
       const highlight = document.createElement("mark")
       this.markElement = highlight
       this.savedRange.surroundContents(highlight)
-      const documentFormField = document.getElementById("comment-field-new").querySelector("input[name='comment[content]']")
+      const documentFormField = document
+        .getElementById("comment-field-new")
+        .querySelector("input[name='comment[content]']")
       documentFormField.value = ""
     } else {
       this.formTarget.classList.add("hidden")
