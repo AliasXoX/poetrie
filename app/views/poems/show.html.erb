@@ -24,7 +24,7 @@
         <%= f.hidden_field :start_position, data: { poems_target: "startPosition"} %>
         <%= f.hidden_field :end_position, data: { poems_target: "endPosition"} %>
         <div class="comment-form-field" id="comment-field-new">
-          <%= f.text_field :content, required: true, placeholder: "Add your comment...", class: "comment-input" %>
+          <%= f.text_area :content, required: true, placeholder: "Add your comment...", class: "comment-input" %>
         </div>
         <div class="comment-form-actions">
           <span class="comment-form-footer" data-action="click->poems#handleCancel">Cancel</span>
@@ -34,7 +34,7 @@
 
       <%= form_with(url: "", method: :patch, class: 'comment-form hidden', data: { poems_target: "updateForm" }) do %>
         <div class="comment-form-field">
-          <%= text_field_tag "comment[content]", @comment.content, required: true, class: "comment-input" %>
+          <%= text_area_tag "comment[content]", @comment.content, required: true, class: "comment-input" %>
         </div>
         <div class="comment-form-actions">
           <span class="comment-form-footer" data-action="click->poems#handleCancel">Cancel</span>
@@ -49,7 +49,7 @@
             <button class="comment-close" data-action="click->poems#hideComment" id="comment_close-<%= comment.id %>" aria-label="Close comment">×</button>
           </div>
           <div class="comment-body">
-            <p class="comment-text"><%= comment.content %></p>
+            <pre class="comment-text"><%= comment.content %></pre>
           </div>
           <div class="comment-actions">
             <button class="comment-edit-btn" data-action="click->poems#handleEdit" data-poems-target="editButton" id="comment_edit-<%= comment.id %>" title="Edit comment">

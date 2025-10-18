@@ -153,7 +153,7 @@ export default class extends Controller {
     // Populate the update form
     this.updateFormTarget.action = `/poems/${this.poemId}/comments/${commentId}`
     this.updateFormTarget.querySelector(
-      'input[name="comment[content]"]'
+      'textarea[name="comment[content]"]'
     ).value = commentText
 
     if (this.updateFormTarget.classList.contains("hidden")) {
