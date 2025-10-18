@@ -376,21 +376,21 @@ a:hover {
   .poem-title {
     font-size: 2rem;
   }
-  
+
   .poem-content {
     font-size: 1.1rem;
   }
-  
+
   .painting-title {
     font-size: 1.5rem;
   }
-  
+
   .poem-container,
   .painting-container,
   .form-container {
     padding: var(--spacing-md) var(--spacing-sm);
   }
-  
+
   .nav-content {
     flex-direction: column;
     gap: var(--spacing-sm);
@@ -544,6 +544,7 @@ a:hover {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -560,6 +561,7 @@ a:hover {
 
 .comment-input {
   width: 100%;
+  max-width: 100%;
   padding: var(--spacing-sm);
   font-family: var(--font-sans);
   font-size: 0.95rem;
@@ -642,6 +644,7 @@ a:hover {
     opacity: 0;
     transform: translateX(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -781,21 +784,21 @@ a:hover {
     width: 45px;
     height: 45px;
   }
-  
+
   .add-comment-icon {
     font-size: 1.1rem;
   }
-  
+
   .comment-actions {
     flex-wrap: wrap;
   }
-  
+
   .comment-edit-btn,
   .comment-delete-btn {
     font-size: 0.75rem;
     padding: 0.4rem 0.7rem;
   }
-  
+
   .comment-action-icon {
     font-size: 0.85rem;
   }
@@ -1023,11 +1026,11 @@ a:hover {
   .welcome-title {
     font-size: 2.5rem;
   }
-  
+
   .welcome-subtitle {
     font-size: 1.1rem;
   }
-  
+
   .welcome-cards {
     grid-template-columns: 1fr;
   }
