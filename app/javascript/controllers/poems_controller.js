@@ -84,7 +84,7 @@ export default class extends Controller {
       this.savedRange.surroundContents(highlight)
       const documentFormField = document
         .getElementById("comment-field-new")
-        .querySelector("input[name='comment[content]']")
+        .querySelector("textarea[name='comment[content]']")
       documentFormField.value = ""
     } else {
       this.formTarget.classList.add("hidden")

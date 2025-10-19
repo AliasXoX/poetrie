@@ -704,6 +704,7 @@ a:hover {
   line-height: 1.6;
   color: var(--color-primary);
   margin: 0;
+  text-wrap: auto;
 }
 
 /* Comment Actions Styles */
