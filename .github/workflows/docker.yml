@@ -17,6 +17,6 @@ jobs:
           username: ${{secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
       - name: Building the image
-        run: docker build -t ghcr.io/${{secrets.DOCKER_USERNAME}}/poetrie-dev:latest .
+        run: docker build -t ghcr.io/${{secrets.DOCKER_USERNAME}}/poetrie-dev:test
       - name: pushing the image
-        run: docker push ghcr.io/${{secrets.DOCKER_USERNAME}}/poetrie-dev:latest
+        run: docker push ghcr.io/${{secrets.DOCKER_USERNAME}}/poetrie-dev:test
