@@ -21,8 +21,8 @@
   <% if @images.any? %>
     <div class="images-grid">
       <% @images.each do |image| %>
-        <%= link_to image_path(image), style: "color: inherit;" do %>
-          <article class="image-card">
+        <article class="image-card">
+          <%= link_to image_path(image), class: "image-card-link-wrapper" do %>
             <div class="image-card-thumbnail">
               <%= image_tag image.image_file, alt: image.title if image.image_file.attached? %>
             </div>
@@ -32,10 +32,17 @@
                 <h2 class="image-card-title"><%= image.title %></h2>
                 <p class="image-card-date"><%= image.created_at.strftime("%B %d, %Y") %></p>
               </div>
-              <span class="image-card-link">View →</span>
+              <span class="image-card-view">View →</span>
             </div>
-          </article>
-        <% end %>
+          <% end %>
+          
+          <div class="image-card-actions">
+            <%= button_to [image], method: :delete, data: { confirm: "Are you sure you want to delete this image?" }, class: "image-delete-btn", title: "Delete image" do %>
+              <span class="image-delete-icon">×</span>
+              <span class="image-action-text">Delete</span>
+            <% end %>
+          </div>
+        </article>
       <% end %>
     </div>
   <% else %>
