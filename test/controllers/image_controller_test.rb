@@ -31,4 +31,12 @@ class ImageControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to image_url(Image.last)
   end
+
+  test "should destroy image" do
+    assert_difference("Image.count", -1) do
+      delete image_url(@image)
+    end
+
+    assert_redirected_to images_url
+  end
 end
